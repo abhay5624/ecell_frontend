@@ -5,8 +5,10 @@ import "../styles/Register.css";
 //Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { faPhone, faBuilding,faEnvelope, faCommentDots, faUsersRectangle,faArrowRight} from "@fortawesome/free-solid-svg-icons";
 export const Contactus = () => {
+  const Navigate = useNavigate();
   const [messages, setMessages] = useState({
     name: " ", email: " ", message: ""
   });
@@ -22,6 +24,10 @@ export const Contactus = () => {
       });
       if (respond.ok) {
         alert("Your message sended");
+        setMessages({
+          name: " ", email: " ", message: ""
+        })
+        Navigate('/');
       } else {
           console.log(respond);
           alert("Can't register");
