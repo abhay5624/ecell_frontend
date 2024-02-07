@@ -4,8 +4,34 @@ import styled from "styled-components";
 import "../styles/Register.css";
 //Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState } from "react";
 import { faPhone, faBuilding,faEnvelope, faCommentDots, faUsersRectangle,faArrowRight} from "@fortawesome/free-solid-svg-icons";
 export const Contactus = () => {
+  const [messages, setMessages] = useState({
+    name: " ", email: " ", message: ""
+  });
+  const HandleContentForm = async (e) => {
+    e.preventDefault();
+    try {
+        const respond = await fetch('https://ecellnitjsr-backend.onrender.com/api/auth/contactus', {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(messages)
+      });
+      if (respond.ok) {
+        alert("Your message sended");
+      } else {
+          console.log(respond);
+          alert("Can't register");
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("Network error. Please try again later.");
+    }
+    
+  }
   return (
     <div style={{"backgroundColor": "#f0f0f0","padding": "10px"}} id="LetTalk">
       <RegisterBox style={{ padding: "5%" }}>
@@ -36,15 +62,15 @@ export const Contactus = () => {
         </Text>
         {/*/Register Form is in this container */}
         <RegisterForm>
-          <form>
+          <form onSubmit={(e)=> {HandleContentForm(e)}}>
             <div style={{ position: "relative" }}>
             <FontAwesomeIcon icon={faUsersRectangle} className="FormIcon"/>
-              <input type="text" name="name" id="name" placeholder="Name" />
+              <input type="text" name="name" id="name" placeholder="Name" onChange={(e)=> {setMessages({...messages, name: e.target.value})}}/>
               <br />
             </div>
             <div style={{ position: "relative" }}>
             <FontAwesomeIcon icon={faEnvelope} className="FormIcon"/>
-              <input type="email" name="email" id="email" placeholder="Email" />
+              <input type="email" name="email" id="email" placeholder="Email" onChange={(e) => {setMessages({...messages, email: e.target.value})}}/>
               <br />
             </div>
             <div style={{ position: "relative" }}>
@@ -55,6 +81,7 @@ export const Contactus = () => {
                 cols="30"
                 rows="10"
                 placeholder="Message"
+                onChange={(e)=> {setMessages({...messages, message: e.target.value})}}
               ></textarea>
             </div>
             <div style={{ position: "relative", width: "max-content" }}>
