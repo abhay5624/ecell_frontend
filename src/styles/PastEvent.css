@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+header {
+  /* background-color: #333; */
+  /* padding: 20px; */
+  text-align: center;
+}
+
+header h2 {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 7px;
+  padding-bottom: 27px;
+  margin: 10px;
+}
+.pasteventimg{
+  background-color: #f0f0f0;
+  border: .1px solid #f0f0f0;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+.carousel-container {
+  position: relative;
+  width: 25%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* Custom styles for the carousel images */
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+ 
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    position: relative;
+    background-color: white; /* Set the background color to white */
+    /* height: 300px; Set the desired height of the images */
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    /* height: 378.4px;  Set the desired height of the images */
+    object-fit: fill;
+  }
+
+/* Custom styles for the carousel caption */
+.carousel-caption {
+  position: absolute;
+  bottom: 33px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  padding: 8px;
+  text-align: center;
+  display: none;
+}
+
+.carousel-caption h5 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.carousel-caption p {
+  margin: 0;
+}
+
+/* Show the caption only for medium and larger screens */
+@media (min-width: 768px) {
+  .carousel-caption {
+    display: block;
+  }
+
+}
+
+
+/* Custom styles for the carousel indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  list-style: none;
+}
+
+.carousel-indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background-color: #333;
+}
+
+/* Custom styles for the carousel controls */
+.carousel-control {
+position: absolute;
+top: 60%;
+width: 5%;
+font-size: 2.5rem;
+color: #0a0101;
+text-align: center;
+background-color:#f0f0f0;
+border-radius: 50%;
+cursor: pointer;
+transform: translateY(-50%);
+z-index: 1;
+}
+.carousel-control:hover{
+  background-color: black;
+  color: white;
+  opacity: .5;
+}
+
+.carousel-control-prev {
+  left: 19%;
+}
+
+.carousel-control-next {
+  right: 19%;
+}
+@media (max-width: 768px){
+  .carousel-container{
+    width: 90vw;
+  }
+  .carousel-control-next{
+    right: 6%;
+  }
+  .carousel-control-prev{
+    left: 6%;
+  }
+}
