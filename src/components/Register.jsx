@@ -26,7 +26,7 @@ export const Contactus = () => {
     e.preventDefault();
     try {
       console.log("this run")
-      const respond = await fetch("/api/auth/startregistration", {
+      const respond = await fetch("https://ecellnitjsr-backend.onrender.com/api/auth/startregistration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
