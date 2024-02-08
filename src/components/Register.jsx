@@ -26,7 +26,8 @@ export const Contactus = () => {
     e.preventDefault();
     try {
       console.log("this run")
-      const respond = await fetch("https://ecellnitjsr-backend.onrender.com/api/auth/startregistration", {
+      //https://ecellnitjsr-backend.onrender.com
+      const respond = await fetch("http://localhost:3001/api/auth/startregistration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,12 +54,17 @@ export const Contactus = () => {
         });
         Navigate('/')
       } else {
-        console.log(respond);
-        alert("Can't register");
+        const error = await respond.json();
+        console.log(error);
+        let msg;
+        error.msg ? msg = error.msg : msg ="Can't register";
+        alert(msg);
       }
     } catch (error) {
       console.error("Network error:", error);
-      alert("Network error. Please try again later.");
+        let msg;
+        error.errorHandle ? msg = error.errorHandle.message : msg ="";
+        alert("Can't register",msg);
     }
   }
   return (
