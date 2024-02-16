@@ -6,6 +6,7 @@ import { useState } from "react";
  import { useNavigate } from "react-router-dom";
 
 //Icons
+import LoadingGif from "../images/Icon/loading-loader.gif"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faBuilding,faEnvelope, faCommentDots, faUsersRectangle,faArrowRight} from "@fortawesome/free-solid-svg-icons";
 export const Contactus = () => {
@@ -22,7 +23,9 @@ export const Contactus = () => {
     Requirements: "",
     phase: ""
   })
+  const [loader, setLoader] = useState(false);
   const submitForm = async (e) => {
+    setLoader(true);
     e.preventDefault();
     try {
       console.log("this run")
@@ -34,11 +37,12 @@ export const Contactus = () => {
         },
         body: JSON.stringify(startUp)
       });
-    
+      
       // Axios automatically parses the response, so no need for respond.json()
       console.log(respond);
     
       if (respond.ok) {
+        setLoader(false);
         alert("Startup registration successful");
         setStartup({
           name: "",
@@ -54,6 +58,7 @@ export const Contactus = () => {
         });
         Navigate('/')
       } else {
+        setLoader(false);
         const error = await respond.json();
         console.log(error);
         let msg;
@@ -61,6 +66,7 @@ export const Contactus = () => {
         alert(msg);
       }
     } catch (error) {
+      setLoader(false);
       console.error("Network error:", error);
         let msg;
         error.errorHandle ? msg = error.errorHandle.message : msg ="";
@@ -68,7 +74,12 @@ export const Contactus = () => {
     }
   }
   return (
-    <div style={{"backgroundColor": "#f0f0f0","padding": "10px"}}>
+    <div style={{ "backgroundColor": "#f0f0f0", "padding": "10px" }}>
+      {loader ? (<Loader >
+        <div>
+          <img src={LoadingGif} alt="" />
+        <h1>LOADING...</h1>
+      </div></Loader>) : ""}
       <RegisterBox style={{ padding: "5%" }}>
         {/*/Text is a div that contain all the social media link */}
         <Text>
@@ -145,6 +156,22 @@ export const Contactus = () => {
     </div>
   );
 };
+const Loader = styled.div`
+  background: #fff;
+  display: flex;
+  position: fixed;
+  align-items:center;
+  color: white;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100vh;
+  z-index: 100;
+  top: 0;
+  left:0;
+  h1{
+    text-align: center;
+  }
+`;
 const RegisterBox = styled.div`
   display: flex;
   flex-direction: row;
