@@ -62,7 +62,7 @@ export const Contactus = () => {
         const error = await respond.json();
         console.log(error);
         let msg;
-        error.msg ? msg = error.msg : msg ="Can't register";
+        error.msg ? msg = error.errorHandle.message : msg ="Can't register";
         alert(msg);
       }
     } catch (error) {
@@ -113,25 +113,25 @@ export const Contactus = () => {
           <form onSubmit={(e) => {submitForm(e)}}>
             <div style={{ position: "relative" }}>
             <FontAwesomeIcon icon={faUsersRectangle} className="FormIcon"/>
-              <input type="text" name="name" id="name" placeholder="Name" value={startUp.name} onChange={(e) => {setStartup({...startUp, name: e.target.value})}} required />
+              <input required type="text" name="name" id="name" placeholder="Name" value={startUp.name} onChange={(e) => {setStartup({...startUp, name: e.target.value})}}   />
               <br />
               <div style={{ position: "relative" }}>
             <FontAwesomeIcon icon={faEnvelope} className="FormIcon"/>
-                <input type="email" name="email" id="email" placeholder="Email" value={startUp.email} onChange={(e) => {setStartup({...startUp, email: e.target.value})}} required />
+                <input required type="email" name="email" id="email" placeholder="Email" value={startUp.email} onChange={(e) => {setStartup({...startUp, email: e.target.value})}}   />
               <br />
             </div>
-              <input type="reg_no" name="reg_no" id="reg_no" placeholder="Registration no" value={startUp.registrationNo} onChange={(e) => {setStartup({...startUp, registrationNo: e.target.value})}} required />
+              <input required type="reg_no" name="reg_no" id="reg_no" placeholder="Registration no" value={startUp.registrationNo} onChange={(e) => {setStartup({...startUp, registrationNo: e.target.value})}}   />
               <br />
-              <input type="number" name="number" id="number" placeholder="Contact no" value={startUp.mobno} onChange={(e) => {setStartup({...startUp, mobno: e.target.value})}} required />
+              <input required type="number" name="number" id="number" placeholder="Contact no" value={startUp.mobno} onChange={(e) => {setStartup({...startUp, mobno: e.target.value})}}   />
               <br />
-              <input type="number" name="num_team_member" id="num_team_member" value={startUp.team} placeholder="Number of Team Members" onChange={(e) => {setStartup({...startUp, team: e.target.value})}}/>
-              <input type="text" name="startup_field" id="startup_field" value={startUp.field} placeholder="The field to which your startup idea belongs to" onChange={(e) => {setStartup({...startUp, field: e.target.value})}}/>
+              <input required type="number" name="num_team_member" id="num_team_member" value={startUp.team} placeholder="Number of Team Members" onChange={(e) => {setStartup({...startUp, team: e.target.value})}}/>
+              <input required type="text" name="startup_field" id="startup_field" value={startUp.field} placeholder="The field to which your startup idea belongs to" onChange={(e) => {setStartup({...startUp, field: e.target.value})}}/>
               <br />
-              <input type="text" name="title" id="title" placeholder="Title of your idea" value={startUp.title} onChange={(e) => {setStartup({...startUp, title: e.target.value})}}/>
+              <input required type="text" name="title" id="title" placeholder="Title of your idea" value={startUp.title} onChange={(e) => {setStartup({...startUp, title: e.target.value})}}/>
               <br />
-              <input type="text" name="requirments" id="requirments" value={startUp.Requirements} placeholder="Requirments if any" onChange={(e) => {setStartup({...startUp, Requirements: e.target.value})}}/>
+              <input required type="text" name="requirments" id="requirments" value={startUp.Requirements} placeholder="Requirments if any" onChange={(e) => {setStartup({...startUp, Requirements: e.target.value})}}/>
               <br />
-              <input type="text" name="phase" id="phase" placeholder="At what phase your idea is" value={startUp.phase} onChange={(e) => {setStartup({...startUp, phase: e.target.value})}}/>
+              <input required type="text" name="phase" id="phase" placeholder="At what phase your idea is" value={startUp.phase} onChange={(e) => {setStartup({...startUp, phase: e.target.value})}}/>
               <br />
             </div>
             <div style={{ position: "relative" }}>
@@ -143,6 +143,7 @@ export const Contactus = () => {
                 rows="10"
                 placeholder="Description"
                 value={startUp.description}
+                required
                 onChange={(e) => {setStartup({...startUp, description: e.target.value})}}
               ></textarea>
             </div>
