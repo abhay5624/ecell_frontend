@@ -30,7 +30,7 @@ export const Contactus = () => {
     try {
       console.log("this run")
       //https://ecellnitjsr-backend.onrender.com
-      const respond = await fetch("http://localhost:3001/api/auth/startregistration", {
+      const respond = await fetch("https://ecellnitjsr-backend.onrender.com/api/auth/startregistration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
