@@ -17,11 +17,16 @@ import BusinessTycon from './components/BusinessTycon';
 import IdeaHackathon from './components/IdeaHackathon';
 import StarSpeaker from './components/StarSpeaker';
 import TeenPrenure from './components/TeenPrenure';
+import LogInForm from './components/LogInForm';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
+
+    
     path: '/',
     element: <>
+    
       <Navbar />
       <HeroSection />
       <VisionGoal />
@@ -115,6 +120,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
+    
     <RouterProvider router={router} />
   );
 }
