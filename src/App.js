@@ -19,6 +19,7 @@ import StarSpeaker from './components/StarSpeaker';
 import TeenPrenure from './components/TeenPrenure';
 import LogInForm from './components/LogInForm';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginForm from './components/LogInForm';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
     
     path: '/',
     element: <>
-    
+    <LoginForm/>
       <Navbar />
       <HeroSection />
       <VisionGoal />
