@@ -27,11 +27,17 @@ const router = createBrowserRouter([
     
     path: '/',
     element: <>
-    <LoginForm/>
       <Navbar />
       <HeroSection />
       <VisionGoal />
       <ProfIncharge />
+      <Footer />
+    </>
+  },{
+    path: '/login',
+    element: <>
+      <Navbar />
+      <LoginForm/>
       <Footer />
     </>
   },
