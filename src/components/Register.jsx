@@ -21,7 +21,8 @@ export const Contactus = () => {
     title: "",
     description: "",
     Requirements: "",
-    phase: ""
+    phase: "",
+    password: "",
   })
   const [loader, setLoader] = useState(false);
   const submitForm = async (e) => {
@@ -133,6 +134,7 @@ export const Contactus = () => {
               <br />
               <input required type="text" name="phase" id="phase" placeholder="At what phase your idea is" value={startUp.phase} onChange={(e) => {setStartup({...startUp, phase: e.target.value})}}/>
               <br />
+              <input required type="password" name="password" id = "password" placeholder="Password" value={startUp.password} onChange={(e) => {setStartup({...startUp, password: e.target.value})}}/>
             </div>
             <div style={{ position: "relative" }}>
             <FontAwesomeIcon icon={faCommentDots} className="FormIcon"/>
